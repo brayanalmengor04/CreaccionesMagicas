@@ -19,7 +19,7 @@ Este enlace te llevará a la página oficial de descarga de Git. Asegúrate de s
 
 Una vez que hayas descargado el instalador, ejecútalo y sigue las instrucciones de instalación. Asegúrate de configurar las opciones según tus preferencias.
 
-## Paso 3: Verifica la Instalación
+## Paso 3: Verifica la Instalación y Como hacer peticiones cambios (pullrequest).
 
 Después de instalar Git, verifica que se haya instalado correctamente ejecutando los siguientes comandos en tu terminal o símbolo del sistema:
 
