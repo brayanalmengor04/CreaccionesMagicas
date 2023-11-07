@@ -5,7 +5,8 @@ Pagina web creacciones magicas
 ¡Bienvenido a nuestro proyecto! Estamos emocionados de que quieras contribuir. Aquí te mostramos cómo clonar el repositorio y enviar una petición de cambio (pull request).
 # Cómo Descargar Git
 
-# Aqui un tutorial de como descargar git y configuraciones [Ver Video Youtube](https://youtu.be/cYLapo1FFmA?si=aJHVKHQ-MLH0HqzD)
+# Aqui un tutorial de como descargar git y configuraciones
+[Ver Video Youtube](https://youtu.be/cYLapo1FFmA?si=aJHVKHQ-MLH0HqzD)
 
 Este README te guiará a través del proceso de descarga e instalación de Git en tu computadora. Git es una herramienta de control de versiones ampliamente utilizada que te permite gestionar y colaborar en proyectos de desarrollo de software.
 
