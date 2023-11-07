@@ -28,7 +28,7 @@ Una vez que hayas descargado el instalador, ejecútalo y sigue las instrucciones
 
 Después de instalar Git, verifica que se haya instalado correctamente ejecutando los siguientes comandos en tu terminal o símbolo del sistema:
 
-```bash
+``bash
 git --version
 Deberías ver la versión de Git que acabas de instalar.
 
@@ -50,7 +50,8 @@ git clone <URL-del-Repositorio>
 git add .
 git commit -m "Descripción de tus cambios"
 git pull origin main
-
-
-
-
+```
+# Aqui el paquete de iconos para la realizacion de la aplicacion 
+[Ver paquete iconos](https://ionic.io/ionicons)
+# Aqui esta el paquete de ilustraciones para la realizacion de la aplicacion creacciones magicas .
+[Ver paquete ilustraciones](https://undraw.co/illustrations)
