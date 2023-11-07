@@ -51,7 +51,11 @@ git add .
 git commit -m "Descripción de tus cambios"
 git pull origin main
 ```
-# Aqui el paquete de iconos para la realizacion de la aplicacion 
+# Aqui el paquete de iconos para la realizacion de la aplicacion  
+Aqui podran visualizar el paquete de iconos para importar a las aplicaciones web para la realizacion de la pagina web de creacciones magicas , mas contiene documentacion de 
+como utilizarla en el proyecto.
 [Ver paquete iconos](https://ionic.io/ionicons)
 # Aqui esta el paquete de ilustraciones para la realizacion de la aplicacion creacciones magicas .
+Aqui podran visualizar el paquete de ilustraciones para importar a las aplicaciones web para la realizacion de la pagina web de creacciones magicas , mas contiene documentacion de 
+como utilizarla en el proyecto.
 [Ver paquete ilustraciones](https://undraw.co/illustrations)
