@@ -32,7 +32,7 @@ Después de instalar Git, verifica que se haya instalado correctamente ejecutand
 git --version
 Deberías ver la versión de Git que acabas de instalar.
 
-## 2.Clonar el Repositorio
+## Clonar el Repositorio
 # Clonar Proyecto de GitHub con Git
 A continuación, te explicamos cómo clonar este proyecto desde GitHub a tu máquina local utilizando Git.
 
@@ -43,14 +43,25 @@ Abre una terminal en tu máquina. Puedes utilizar la terminal de tu sistema oper
 
 ## Paso 3: Clonar el Repositorio
 
-Ejecuta el siguiente comando en la terminal, reemplazando `<URL-del-Repositorio>` con la URL que copiaste en el Paso 1:
+Ejecuta el siguiente comando en la terminal, reemplazando `<URL-del-directorio-de-localizacion>` con la URL que copiaste en el Paso 1:
+```bash
+cd <URL-del-lugar-destino-copy>
+```
+Ejecuta el siguiente comando en la terminal, reemplazando `<URL-del-Repositorio>` con la URL que copiaste en el Paso 2:
 ```bash
 git clone <URL-del-Repositorio>
-#  Hacer una Petición de Cambio (Pull Request) o cambio.
-git add .
-git commit -m "Descripción de tus cambios"
-git pull origin main
 ```
+
+Pasos para hacer peticion de cambio en el repositorio el siguiente  `<git -pull>` con la URL que copiaste en el Paso 2:
+```bash
+git clone <URL-del-Repositorio>
+git checkout -b NOMBRE_RAMA
+git add.
+git commit -m "Descripcion del cambio"
+git push 
+
+```
+
 # Aqui el paquete de iconos para la realizacion de la aplicacion  
 Aqui podran visualizar el paquete de iconos para importar a las aplicaciones web para la realizacion de la pagina web de creacciones magicas , mas contiene documentacion de 
 como utilizarla en el proyecto.
