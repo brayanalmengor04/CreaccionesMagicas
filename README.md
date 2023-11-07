@@ -7,6 +7,8 @@ Pagina web creacciones magicas
 
 Este README te guiará a través del proceso de descarga e instalación de Git en tu computadora. Git es una herramienta de control de versiones ampliamente utilizada que te permite gestionar y colaborar en proyectos de desarrollo de software.
 
+##Aqui un tutorial de como descargar git y configuraciones [Ver Video Youtube](https://youtu.be/cYLapo1FFmA?si=aJHVKHQ-MLH0HqzD)
+
 ## Paso 1: Descarga Git
 
 Para descargar Git, simplemente haz clic en el enlace de descarga a continuación:
