@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 
 /* 
 font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Condensed', sans-serif;
 */
 * {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Agbalumo', sans-serif; 
+    font-weight: lighter;
     margin: 0;
     padding: 0;
     box-sizing: border-box;  
@@ -100,7 +102,7 @@ body{
     width: 100%;
     height: 80vh;
     position: relative;
-    background-color: #974ec3;
+    background-color: #ac73cf;
     border-radius: 470px 0 0 0;
 
 }
@@ -240,7 +242,7 @@ body{
 .container__destacados {
 
     width: 100%;
-    height: 100vh;
+    height: 120vh;
 
 }
 
