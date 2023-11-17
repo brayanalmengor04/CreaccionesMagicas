@@ -20,7 +20,21 @@ document.addEventListener("DOMContentLoaded" ,()=>{
             });            
         });
     }
-});  
+});   
+const regresarInicio = document.querySelector('.container__menuresponsive__menu-mainfiltrer img')
+.addEventListener("click",()=>{window.location.href ="/src/index.html";} ); 
+
+
+const menuresponsive = document.querySelector('.container__menuresponsive')
+.addEventListener('click',()=>{
+    document.querySelector('.container__menuresponsive-menu').style.left = '0';
+}); 
+
+const menuCLoseResponsive = document.querySelector('.container__menuresponsive__menu-icon')
+.addEventListener('click',()=>{
+    document.querySelector('.container__menuresponsive-menu').style.left = '1400px';
+});
+
 /*
 arrowTop.addEventListener('click',()=>{
     carrucelItems.scrollTop -=100;
