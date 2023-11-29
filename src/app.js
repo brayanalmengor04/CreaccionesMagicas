@@ -20,31 +20,75 @@ menuresponsive.addEventListener("click",()=>{ menuMostrar.style.left = '0px';   
 menuOcultar.addEventListener("click",()=>{menuMostrar.style.left ='480px';});
 const redicionar = document.getElementById('redireccionar').addEventListener("click",()=>{window.location.href = "/src/tiendaonly.php";});
 const ratingAction = document.querySelectorAll('.container__resenia-calificacion span'); 
-
-function rate(params) {
-        rating= params;
-        console.log(rating);
-        ratingAction.forEach((element,index) => {
-            if (rating>index) {
-                element.classList.add('rating');   
-            }
-            else{
-                element.classList.remove('rating');
-            }
+/*
+document.addEventListener('DOMContentLoaded', function () {
+    
+    var carruselContainer = document.querySelector('.container__testimonios__carrucel');
+    var carruselContent = document.querySelector('.container__testimonios__main-textrenia');
+    
+   
+  
+    
+    document.getElementById('btn-izquierda').addEventListener('click', function () {
+        //carruselContainer.scrollLeft -= 670; // Puedes ajustar la cantidad según tu diseño 
+        carruselContainer.scrollBy({
+            left: -670,
+            behavior: 'smooth' // Aplica un desplazamiento suave vertical
         });
-}
-
-function ratehover(params) { 
-    rating= params; 
-    ratingAction.forEach((element,index) => {
-        if (rating>index) {
-            element.classList.add('rating');   
-        }
-        else{
-            element.classList.remove('rating');
-        }
     });
-} 
 
+    document.getElementById('btn-derecha').addEventListener('click', function () {
+        // Mueve el scroll a la derecha
+        //carruselContainer.scrollLeft += 670; // Puedes ajustar la cantidad según tu diseño 
+        carruselContainer.scrollBy({
+            left: 670,
+            behavior: 'smooth' // Aplica un desplazamiento suave vertical
+        });
+    });
+     
 
+});
+
+*/
+
+document.addEventListener('DOMContentLoaded', function () {
+        
+    var carruselContainer = document.querySelector('.container__testimonios__carrucel');
+    var carruselContent = document.querySelector('.container__testimonios__main-textrenia');
+
+    document.getElementById('btn-izquierda').addEventListener('click', function () {
+        // Mueve el scroll a la izquierda con animación suave
+        smoothScroll(carruselContainer, -670, 500); // -100 es la cantidad a desplazar, 500 es la duración en milisegundos
+    });
+
+    document.getElementById('btn-derecha').addEventListener('click', function () {
+        // Mueve el scroll a la derecha con animación suave
+        smoothScroll(carruselContainer, 670, 500); // 100 es la cantidad a desplazar, 500 es la duración en milisegundos
+    });
+
+    function smoothScroll(element, amount, duration) {
+        var start = element.scrollLeft;
+        var startTime = performance.now();
+
+        function step(time) {
+            var currentTime = time - startTime;
+
+            element.scrollLeft = Math.easeInOutQuad(currentTime, start, amount, duration);
+
+            if (currentTime < duration) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Función de aceleración/desaceleración cuadrática
+    Math.easeInOutQuad = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    };
+});
 

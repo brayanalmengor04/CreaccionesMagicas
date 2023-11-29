@@ -4,7 +4,14 @@
  if ($conexion->connect_error) {
      die("Conexion Fallida: " . $conexion->connect_error);
  }
- 
+    $consulta = "CALL p_selectAll_resenia ()";  
+    if($declaracion = $conexion->prepare($consulta)){ 
+        $declaracion->execute();
+        $resultado = $declaracion->get_result();
+        $declaracion->close();
+    }
+
+
  if (isset($_POST['register'])) {
      if (isset($_POST['correo']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['experiencia'])) {
          $correo = $_POST['correo'];
@@ -14,7 +21,7 @@
  
          $sql = "INSERT INTO resenia (correoelectronico, nombre, apellido, resenia) 
                  VALUES ('$correo', '$nombre', '$apellido', '$experiencia')";
- 
+        
          try {
              if ($conexion->query($sql)) { 
                 header("Location: mensage.php?mensaje=Se ha realizado correctamente su comentario!");
@@ -197,31 +204,27 @@
             </div>
             <div class="container__testimonios__main-resenia" >
                 <div class="container__testimonios__main-slider" >
-                    <ion-icon name="chevron-back-outline"></ion-icon> 
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div> 
-                <div class="container__testimonios__main-textrenia" data-aos="fade-right" data-aos-delay="400"  data-aos-duration="1000">
-                    <h4>Buen Servicio !Recomendado</h4> 
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius laudantium nobis eveniet blanditiis non aspernatur inventore qui nam repudiandae voluptates maxime incidunt dolor, dicta corporis animi similique voluptatum cupiditate ullam.
-                    Tempora earum laborum nihil distinctio voluptatibus eum, omnis fugit eos totam ullam placeat rerum illum atque? Qui possimus molestiae, quaerat similique ducimus quod animi pariatur, dolorum laudantium laboriosam a iure!
-                    </p> 
-                    <div class="container__testimonios__main-perfil">
-                        <img src="/resources/undraw_female_avatar_efig (1).svg" alt="prueba"> 
-                        <h5>Fulanita Rodriguez</h5> 
-                        <p>La Chorrera , Panama</p>
-                    </div> 
-                    <div class="container__testimonios__varas">
-                        
-                            <span><ion-icon  name="color-wand-outline"></ion-icon></span>
-                            <span><ion-icon  name="color-wand-outline"></ion-icon></span>
-                            <span><ion-icon  name="color-wand-outline"></ion-icon></span>
-                            <span><ion-icon  name="color-wand-outline"></ion-icon></span> 
-                            <span><ion-icon  name="color-wand-outline"></ion-icon></span> 
-                        
-                    </div>
-                </div>
-            </div>
+                    <ion-icon id="btn-izquierda"  name="chevron-back-outline"></ion-icon> 
+                    <ion-icon id="btn-derecha" name="chevron-forward-outline"></ion-icon>
+                </div>  
+ 
 
+            <div class="container__testimonios__carrucel" >
+                <?php
+                     while ($fila = $resultado->fetch_assoc()) {
+                        echo '
+                        <div class="container__testimonios__main-textrenia" data-aos="fade-right" data-aos-delay="400"  data-aos-duration="1000">
+                        <p>'.$fila['resenia'].'</p> 
+                        <div class="container__testimonios__main-perfil">
+                            <img src="/resources/undraw_female_avatar_efig (1).svg" alt="prueba"> 
+                            <h5>'.$fila['nombre'].','.$fila['apellido'] .'</h5> 
+                            <p>La Chorrera , Panama</p>
+                        </div> 
+                        </div>
+                        ';
+                     }   
+                ?>              
+            </div>        
         </div>
         <div id="idModalBox" class="container__testimonios__main-modalbox" > 
             <div class="container__modelbox-icon">
