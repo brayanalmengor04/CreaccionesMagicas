@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
    
   
+  
     
     document.getElementById('btn-izquierda').addEventListener('click', function () {
         //carruselContainer.scrollLeft -= 670; // Puedes ajustar la cantidad según tu diseño 
