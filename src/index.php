@@ -4,7 +4,15 @@
  if ($conexion->connect_error) {
      die("Conexion Fallida: " . $conexion->connect_error);
  }
-    $consulta = "CALL p_selectAll_resenia ()";  
+     
+    $consultaDestacado = "CALL p_selectdestacado_producto ('Destacado')";  
+    if($declaraciondestacado = $conexion->prepare($consultaDestacado)){ 
+        $declaraciondestacado->execute();
+        $resultadoDestacado = $declaraciondestacado->get_result();
+        $declaraciondestacado->close();
+    }
+
+    $consulta = "CALL p_selectAll_resenia ()"; 
     if($declaracion = $conexion->prepare($consulta)){ 
         $declaracion->execute();
         $resultado = $declaracion->get_result();
@@ -37,7 +45,6 @@
  
  $conexion->close();
  
-  
 ?>
 
 
@@ -51,8 +58,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/src/style.css">
     <link rel="shortcut icon" href="/resources/lily-logo-solo-PNG.ico" type="image/x-icon"> 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 </head>
 
 <body>
@@ -100,24 +105,30 @@
 
                 <div class="container__presentacion-componentes">
                     <div class="container__presentacion-titulo" data-aos="fade-right" data-aos-duration="1300">
-                        <h1>Optimizando tu Visión Online: De Ideas a Momentos Mágicos con Decoraciones, 
-                            Arreglos Florales y Sorpresas Especiales.</h1>
+                        <h1>Diseñando Experiencias Únicas: Expertos en Arreglos Florales y Decoraciones Personalizadas.</h1>
                         <div class="container__presentacion-subtitulo">
                             <h2>
 "Transforma tus Eventos: Arreglos Florales, Decoraciones y Más. Celebra con Nosotros. ¡Reserva Ya!"</h2>
                         </div>
                         <div class="container__presentacion-boton" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
-                            <button type="button">Contactenos Aqui!</button>
+                            <button id="linktab" type="button">Contactenos Aqui!</button>
                         </div>
                         <div class="container__presentacion-icon"> 
-                            <div class="container__presentacion__icon-whatsapp">
-                               <ion-icon name="logo-whatsapp"></ion-icon> 
+                            <div class="container__presentacion__icon-whatsapp"> 
+                                <a  href="https://wa.me/50765425634?text=¡Hola Creacciones Magicas! Quiero Obtener informacion de sus servicios." target="_blank" >
+                                    <ion-icon name="logo-whatsapp" style="cursor:pointer"></ion-icon>
+                                </a>
+                               
                             </div>
                             <div class="container__presentacion__icon-instagram">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </div>
-                            <div class="container__presentacion__icon-tiktok">
-                                <ion-icon name="logo-tiktok"></ion-icon>
+                                <a href="https://www.instagram.com/creaciones_magicas_by_lily" target="_blank"> 
+                                    <ion-icon name="logo-instagram" style="cursor:pointer"></ion-icon> </a>
+                             </div>
+                            <div class="container__presentacion__icon-tiktok"> 
+                                <a href="#">
+                                   <ion-icon name="logo-tiktok" style="cursor:pointer"></ion-icon> 
+                                </a>
+                                
                             </div>
                         </div>
                     </div>
@@ -135,10 +146,27 @@
             <p>!En Nuestro serivicio, estamos comprometidos a atender todas tus necesidades, Nos Esforzamos por
                 brindarte una experiencia personalizada y unica, adaptarnos a tus deseos y requisitos
                 para hacer realidad tus sueños y necesidades!</p>
-        </div>
+        </div> 
+       
+
         <div class="container__destacado-cards">
             <div class="container__destacado-carrucel">
                 <!--GENERAR ESTE DIV EN PHP CON LOS PRODUCTOS DESTACADOS-->
+                 <?php
+             while ($fila = $resultadoDestacado->fetch_assoc()) { 
+                
+                $imagenBinaria = $fila['imagenProducto'];
+                $imagenCodificada = base64_encode($imagenBinaria); 
+                echo '
+                <div class="container__destacado-items" data-aos="fade-up" data-aos-duration="1000">
+                    <img src="data:image/jpeg;base64,' . $imagenCodificada . '"  alt="prueba">
+                    <h3>'. $fila['nombreProducto'] . '</h3>
+                    <p>'. $fila['descripcion'] .'</p>
+                </div>
+                '; 
+                    }
+                 ?>
+            <!--     
                 <div class="container__destacado-items" data-aos="fade-up" data-aos-duration="1000">
                     <img src="/resources/IMG-20230928-WA0047.jpg" alt="prueba">
                     <h3>Titulo Prueba - Mas detalle asjkjak jdkjd kasj dk</h3>
@@ -157,7 +185,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias similique incidunt debitis minima
                         soluta ipsum dolore quasi molestiae ex quis assumenda, magni et </p>
                 </div>
-
+                -->     
             </div>
         </div>
         <div class="container__destacados-boton" data-aos="zoom-in" data-aos-duration="1000">
@@ -214,11 +242,11 @@
                      while ($fila = $resultado->fetch_assoc()) {
                         echo '
                         <div class="container__testimonios__main-textrenia" data-aos="fade-right" data-aos-delay="400"  data-aos-duration="1000">
-                        <p>'.$fila['resenia'].'</p> 
+                            <p>'.$fila['resenia'].'</p> 
                         <div class="container__testimonios__main-perfil">
-                            <img src="/resources/undraw_female_avatar_efig (1).svg" alt="prueba"> 
-                            <h5>'.$fila['nombre'].','.$fila['apellido'] .'</h5> 
-                            <p>La Chorrera , Panama</p>
+                            <img src="/resources/revision-de-comentarios.png" alt="prueba"> 
+                            <h5>'.$fila['nombre'].' , '.$fila['apellido'] .'</h5> 
+                            <p>Gracias por Preferirnos en Creacciones Magicas! <ion-icon style="color:red" name="heart-circle-outline"></ion-icon> </p>
                         </div> 
                         </div>
                         ';
@@ -267,34 +295,55 @@
         <div class="container__footerwavedown">
             <img src="/resources/Vector (4).svg" alt="">
         </div>     
-        <div class="container__footer-main">
+
+        <div class="container__footer-main"> 
+
+            <div class="container__footer-logotipo">
+                <img src="/resources/lily-logo-solo-PNG.webp" alt="logotipo">
+            </div>    
             <div class="container__footer__main-informacion">
                 <div class="container__footer-main__info-item">
                     <h5> Que Podemos Hacer por Ti?</h5> 
-                    <li>Inicio</li>
-                    <li>Sobre Nosotros</li>
-                    <li>Destacados</li>
-                    <li>Mas Informacion</li>
+                     <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit minus aspernatur distinctio quibusdam optio iste quas est dolor, quisquam eveniet. Quas ad aspernatur fuga minima sequi consequatur cupiditate recusandae alias.
+                        Iure qui maiores nisi veniam id dicta, cupiditate hic consequatur temporibus adipisci rerum! Fuga quibusdam excepturi natus minu
+                     </p>
+                </div>
+               
+                <div class="container__footer-main__info-item">
+                    <h5>Informacion!</h5>  
+                    <span>Panama, Panama Oeste</span> <br>
+                    <span>(+507) 6269-1094 <ion-icon name="logo-whatsapp"></ion-icon></span> <br>
+                    <span>correogmail@gmail.com </span>
+                     <span></span>
+
                 </div>
                 <div class="container__footer-main__info-item">
-                    <h5>Nombre Persona</h5> 
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </div>
-                <div class="container__footer-main__info-item">
-                    <h5>Trabajamos Juntos</h5> 
-                    <h6>Escribeme!</h6> 
-                    <i>Contactos</i>
-                </div>
-                <div class="container__footer-main__info-item">
-                    <h5>Enlaces</h5> 
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <h5>Siguenos </h5> 
+                    <li>
+                     <span >
+                     <ion-icons  name="logo-instagram"></ion-icon> 
+                     Siguenos en Instagram
+                     </span>
+                     <span  >
+                     <ion-icon style="color:green" name="logo-whatsapp"></ion-icon>      
+                     Contactanos en WhatsApp
+                     </span>
+                     <span >
+                     <ion-icon style="background:black; border-radius:50%" name="logo-tiktok"></ion-icon> 
+                     Siguenos en Tiktok!
+                     </span>
+                     <span >
+                     <ion-icon style="color:blue" name="logo-facebook"></ion-icon> 
+                     Siguenos en Facebook!
+                     </span>
+
+                    </li>
+                    
                 </div>
             </div> 
+                 
+
             <div class="container__footer__main-copyright">
                 <h6>Año CopyRight -Todos los Derechos Reservados!</h6>
             </div>

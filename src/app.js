@@ -6,6 +6,10 @@ const ocultarPop = document.getElementById('ocultarPopModel');
 function closeMenu(){document.getElementById('menuoculto').style.left ='480px';}; 
 function closeModelBox(){document.getElementById('idModalBox').style.display= 'none';}
 function home(){window.location.href="/src/index.php"};
+ 
+
+const contactos = document.getElementById('linktab').addEventListener('click',()=>{
+    window.open("https://linktab.co/creaccionesmagicasbylily", '_blank');});
 
 const botonPopUp = document.getElementById('btnBoxModel'); 
 botonPopUp.addEventListener("click",()=>{
